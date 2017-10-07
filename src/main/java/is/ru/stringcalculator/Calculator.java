@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Calculator{
 	public static int add(String text){
 		if (text.contains("-")){
-			String numbers[] = (text.split(",|\\\n"));
+			String numbers[] = getSplit(text);
 			ArrayList<String> list = new ArrayList<String>();
 			for (int i = 0; i < numbers.length; i++){
 				if (numbers[i].contains("-")){
@@ -23,7 +23,7 @@ public class Calculator{
 		}
 		else{
 			if (text.contains(",") || text.contains("\n")){
-				String numbers[] = (text.split(",|\\\n"));
+				String numbers[] = getSplit(text);
 				int total = 0;
 				for (String number : numbers){
 					total+= StringToInt(number);
@@ -36,5 +36,9 @@ public class Calculator{
 
 	private static int StringToInt(String number){
 		return Integer.parseInt(number);
+	}
+
+	private static String[] getSplit(String number){
+		return number.split(",|\\\n");
 	}
 }
