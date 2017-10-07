@@ -38,4 +38,22 @@ public class CalculatorTest{
 	public void testNewLineAndComma(){
 		assertEquals(12, Calculator.add("6\n4,2"));
 	}
+
+	@Test
+	public void testNegativeNumber(){
+		try{
+			Calculator.add("-1,2");
+		}catch (IllegalArgumentException e){
+			assertEquals("Negatives are not allowed: [-1]", e.getMessage());
+		}
+	}
+
+	@Test
+	public void testManyNegativeNumbers(){
+		try{
+			Calculator.add("-1,2,-5,6,-2");
+		}catch (IllegalArgumentException e){
+			assertEquals("Negatives are not allowed: [-1, -5, -2]", e.getMessage());
+		}
+	}
 }
