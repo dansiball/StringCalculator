@@ -15,7 +15,6 @@ public class Calculator{
 			}
 			String[] negativeNumbers = new String[list.size()];
 			list.toArray(negativeNumbers);
-
 			throw new IllegalArgumentException("Negatives are not allowed: " + (Arrays.toString(negativeNumbers)));
 		}
 		if (text.equals("")){
@@ -26,7 +25,9 @@ public class Calculator{
 				String numbers[] = getSplit(text);
 				int total = 0;
 				for (String number : numbers){
-					total+= StringToInt(number);
+					if (!(StringToInt(number) > 1000)){
+						total+= StringToInt(number);
+					}
 				}
 				return total;
 			}

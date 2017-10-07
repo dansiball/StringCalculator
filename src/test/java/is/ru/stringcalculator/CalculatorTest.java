@@ -56,4 +56,14 @@ public class CalculatorTest{
 			assertEquals("Negatives are not allowed: [-1, -5, -2]", e.getMessage());
 		}
 	}
+
+	@Test
+	public void testBiggerthen1000(){
+		assertEquals(5, Calculator.add("10000,2,3"));
+	}
+
+	@Test
+	public void testBiggerthen1000V2(){
+		assertEquals(1006, Calculator.add("9999,1000,3\n3"));
+	}
 }
