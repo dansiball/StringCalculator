@@ -28,4 +28,14 @@ public class CalculatorTest{
 	public void testThreeNumbersV2(){
 		assertEquals(12, Calculator.add("6,4,2"));
 	}
+
+	@Test
+	public void testNewLine(){
+		assertEquals(8, Calculator.add("4\n4"));
+	}
+
+	@Test
+	public void testNewLineAndComma(){
+		assertEquals(12, Calculator.add("6\n4,2"));
+	}
 }
