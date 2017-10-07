@@ -8,9 +8,13 @@ public class Calculator{
 		else{
 			if (text.contains(",")){
 				String numbers[] = text.split(",");
-				return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+				int total = 0;
+				for (String number : numbers){
+					total+= Integer.parseInt(number);
 				}
+				return total;
 			}
-		return Integer.parseInt(text);
+			return Integer.parseInt(text);
+		}
 	}
 }
