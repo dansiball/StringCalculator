@@ -6,7 +6,10 @@ import java.util.regex.Pattern;
 
 public class Calculator{
 	public static int add(String text){
-		if (text.contains("-")){
+		if (text.equals("")){
+			return 0;
+		}
+		else if (text.contains("-")){
 			String numbers[] = getSplit(text);
 			ArrayList<String> list = new ArrayList<String>();
 			for (int i = 0; i < numbers.length; i++){
@@ -18,15 +21,12 @@ public class Calculator{
 			list.toArray(negativeNumbers);
 			throw new IllegalArgumentException("Negatives are not allowed: " + (Arrays.toString(negativeNumbers)));
 		}
-		if (text.equals("")){
-			return 0;
-		}
+
 		else{
 			if(checkDelimiter(text)){
 				String delimiter = getDelimiter(text);
 				String numbers[] = text.split(delimiter);
-				numbers = Arrays.copyOfRange(numbers, 1, numbers.length);
-				numbers[0] = numbers[0].replace("\n", "");
+				numbers = correctArray(numbers);
 				int total = 0;
 				for (String number : numbers){
 					total+= StringToInt(number);
@@ -62,5 +62,11 @@ public class Calculator{
 	private static String getDelimiter(String numbers){
 		String toReturn[] = numbers.split("//|\\\n");
 		return toReturn[1];
+	}
+
+	private static String[] correctArray(String[] numbers){
+		numbers = Arrays.copyOfRange(numbers, 1, numbers.length);
+		numbers[0] = numbers[0].replace("\n", "");
+		return numbers;
 	}
 }
