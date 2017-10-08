@@ -66,4 +66,14 @@ public class CalculatorTest{
 	public void testBiggerthen1000V2(){
 		assertEquals(1006, Calculator.add("9999,1000,3\n3"));
 	}
+
+	@Test
+	public void testDelimiter(){
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+
+	@Test
+	public void testDelimiterV2(){
+		assertEquals(10, Calculator.add("//Hello\n1Hello2Hello3Hello4"));
+	}		
 }
